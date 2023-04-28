@@ -24,11 +24,34 @@ function App() {
     },1500);
   }
 
-  const toggleMode=()=>{
+  const removeBodyClasses=()=>{
+    document.body.classList.remove('bg-primary')
+    document.body.classList.remove('bg-light')
+    document.body.classList.remove('bg-dark')
+    document.body.classList.remove('bg-warning')
+    document.body.classList.remove('bg-danger')
+    document.body.classList.remove('bg-success')
+
+  }
+
+  
+
+  const toggleMode=(clss)=>{
+    removeBodyClasses();
+    console.log(clss)
+    document.body.classList.add('bg-'+clss)
     if(mode==='light'){
       setmode('dark');
       document.body.style.backgroundColor= '#03171d';
       showAlert("Dark mode is enabled", "success");
+    }
+    else{
+      setmode('light');
+      document.body.style.backgroundColor= 'white';
+      showAlert("Light mode is enabled", "success");
+      // document.title="Basics - Light Mode";
+    }
+   
       // document.title="Basics - Dark Mode";
       // setInterval=(()=>{
       //   document.title="Basics is amazing";
@@ -37,13 +60,8 @@ function App() {
       //   document.title="Install Basics now";
       // },1500);
     }
-    else{
-      setmode('light');
-      document.body.style.backgroundColor= 'white';
-      showAlert("Light mode is enabled", "success");
-      // document.title="Basics - Light Mode";
-    }
-  }
+    
+  
   return (
     <>
     {/* <Router> */}
